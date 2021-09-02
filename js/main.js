@@ -5,6 +5,7 @@ const errorMessage = document.getElementById('error-msg');
 // load data
 const getValue = () => {
     const searchText = searchValue.value;
+    searchValue.value = '';
     booksDiv.textContent = '';
     results.textContent = '';
     errorMessage.textContent = '';
@@ -21,7 +22,7 @@ const getValue = () => {
 // total books number found by search
 const bookDetails = book => {
     if (book.docs.length === 0) {
-        errorMessage.innerText = 'Sorry No result found';
+        errorMessage.innerText = 'Sorry! No data found';
     }
     else {
         const totalResult = results;
