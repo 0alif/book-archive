@@ -30,7 +30,7 @@ const bookDetails = book => {
         const totalResult = results;
         totalResult.innerText = `Showing ${book.docs.length} results of ${book.numFound}`;
         books = book.docs;
-        books.forEach(element => {
+        books?.forEach(element => {
             displayDetails(element);
         });
     }
@@ -44,10 +44,10 @@ const displayDetails = details => {
     <div class="card">
     <img src="https://covers.openlibrary.org/b/id/${details.cover_i}-M.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="">${details.title}</h5>
-      <p>Author: ${details.author_name}</p>
-      <p>Publisher: ${details.publisher}</p>
-      <p>First publish year: ${details.first_publish_year}</p>
+      <h5>${details.title}</h5>
+      <p>Author: ${details.author_name ? details.author_name[0] : 'author name not found'}</p>
+      <p>Publisher: ${details.publisher ? details.publisher[0] : 'publisher are not available'}</p>
+      <p>First publish in: ${details.first_publish_year}</p>
     </div>
   </div>  `;
     books.appendChild(div);
