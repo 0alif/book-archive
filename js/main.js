@@ -1,7 +1,13 @@
+const searchValue = document.getElementById('search-text');
+const results = document.getElementById('total-result');
+const booksDiv = document.getElementById('books');
 const errorMessage = document.getElementById('error-msg');
 // load data
 const getValue = () => {
-    const searchText = document.getElementById('search-text').value;
+    const searchText = searchValue.value;
+    booksDiv.textContent = '';
+    results.textContent = '';
+    errorMessage.textContent = '';
     // Handle error
     if (searchText === '') {
         errorMessage.innerText = 'Search field can not be empty';
@@ -18,7 +24,7 @@ const bookDetails = book => {
         errorMessage.innerText = 'Sorry No result found';
     }
     else {
-        const totalResult = document.getElementById('total-result');
+        const totalResult = results;
         totalResult.innerText = `Showing ${book.docs.length} results of ${book.numFound}`;
         books = book.docs;
         books.forEach(element => {
@@ -28,7 +34,7 @@ const bookDetails = book => {
 }
 // display book details
 const displayDetails = details => {
-    const books = document.getElementById('books');
+    const books = booksDiv;
     const div = document.createElement('div');
     div.classList.add('col');
     div.innerHTML = `
@@ -37,6 +43,7 @@ const displayDetails = details => {
     <div class="card-body">
       <h5 class="">${details.title}</h5>
       <p>Author: ${details.author_name}</p>
+      <p>Publisher: ${details.publisher}</p>
       <p>First publish date: ${details.publish_date}</p>
     </div>
   </div>  `;
