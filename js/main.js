@@ -47,7 +47,7 @@ const displayDetails = details => {
       <h5 class="">${details.title}</h5>
       <p>Author: ${details.author_name}</p>
       <p>Publisher: ${details.publisher}</p>
-      <p>First publish date: ${details.publish_date}</p>
+      <p>First publish year: ${details.first_publish_year}</p>
     </div>
   </div>  `;
     books.appendChild(div);
