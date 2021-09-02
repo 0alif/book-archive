@@ -1,3 +1,4 @@
+// html element
 const searchValue = document.getElementById('search-text');
 const results = document.getElementById('total-result');
 const booksDiv = document.getElementById('books');
@@ -5,6 +6,7 @@ const errorMessage = document.getElementById('error-msg');
 // load data
 const getValue = () => {
     const searchText = searchValue.value;
+    // clear field
     searchValue.value = '';
     booksDiv.textContent = '';
     results.textContent = '';
@@ -14,7 +16,7 @@ const getValue = () => {
         errorMessage.innerText = 'Search field can not be empty';
     }
     else {
-        fetch(`http://openlibrary.org/search.json?q=${searchText}`)
+        fetch(`https://openlibrary.org/search.json?q=${searchText}`)
             .then(res => res.json())
             .then(data => bookDetails(data));
     }
